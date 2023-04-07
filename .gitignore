@@ -30,3 +30,4 @@ dist-ssr
 ressources
 **/playground.js
 **/*.taskpaper
+**/morpion*.js
