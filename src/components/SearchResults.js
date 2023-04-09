@@ -1,5 +1,5 @@
 import { SearchResult } from "./SearchResult.js"
-import { /* getCitiesDetailsFromResults,  */getCitiesFromQuery } from "../location/geolocation.js"
+import { /* getCitiesDetailsFromResults,  */getCitiesFromQuery } from "../location/locationIQ-api.js"
 
 export async function SearchResults(query) {
   let searchResultsHTML = ''
