@@ -5,7 +5,8 @@
 
   /** BODY **/
 
-  --body-max-width: 90%;
+  --body-min-width: 270px;
+  --body-max-width: 450px;
 
   /* FONT-FAMILY */
 
@@ -158,7 +159,6 @@ body {
   /* grid-template-rows: auto 1fr auto; */
 
   color: var(--clr-foreground);
-  background-color: var(--clr-background);
 
   font-family: var(--ff-primary);
   font-size: var(--fs-default);
@@ -169,6 +169,23 @@ body {
   text-rendering: optimizelegibility;
 
   overflow-x: hidden;
+  /* overflow-y: auto; */
+  position: relative;
+  /* user-select: none; */
+}
+
+body::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;
+}
+
+body::after {
+  content: "";
+  min-height: calc(100% + 3rem);
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: linear-gradient(to top right, var(--clr-grey-300), var(--clr-grey-800));
 }
 
 /* A elements that don't have a class get default styles */
@@ -463,6 +480,24 @@ input {
   border-color: transparent;
 }
 
+.sticky {
+  position: sticky;
+  position: sticky;
+  /* top: 0; */
+
+  bottom: 0;
+  z-index: 10;
+}
+
+.fixed {
+  position: fixed;
+  position: fixed;
+  /* top: 0; */
+  /* left: 0; */
+  bottom: 0;
+  z-index: 10;
+}
+
 .show {
   opacity: 1;
 }
@@ -524,17 +559,24 @@ input {
 }
 
 .slider-x-body {
+  min-height: calc(100% + 3rem);
+  max-width: var(--body-max-width);
+  min-width: var(--body-min-width);
+  width: 100%;
+
   --gap: 1rem;
+  --slider-gap: var(--gap);
   display: grid;
   grid-template-rows: auto;
   grid-template-columns: 100%;
   gap: 1rem;
   place-items: center;
+  place-self: center;
   grid-auto-flow: column;
   grid-auto-columns: 100%;
 
-  /* background-color: var(--clr-grey-900);
-  filter: brightness(60%); */
+  background-color: var(--clr-dark);
+  /* filter: brightness(60%); */
 
   /* `padding` and `scroll-padding-inline` works together */
   padding: var(--gap);
@@ -562,7 +604,7 @@ input {
   grid-auto-flow: column;
   grid-auto-columns: 21%;
 
-  background-color: var(--clr-grey-900);
+  /* background-color: var(--clr-grey-900); */
 
   /* `padding` and `scroll-padding-inline` works together */
   padding: var(--gap);
@@ -592,31 +634,44 @@ input {
 /* ELEMENTS */
 
 .dropdown {
-  position: absolute;
-  z-index: 9;
-  top: calc(100% + 1.2rem);
-  right: 0;
+  display: none;
+
+  max-width: var(--body-max-width);
+  min-width: var(--body-min-width);
   width: 100%;
-  /* width: fit-content; */
-  height: fit-content;
+  min-height: 100vh;
+  min-height: 100dvh;
+  height: 100%;
+
+  position: absolute;
+  z-index: 20;
+  top: 0;
+
   overflow-y: scroll;
   opacity: 0;
 
   place-items: center;
-  /* padding-block: 12.3rem 1rem;
-  padding-inline: 4.1rem; */
-  background-color: hsl(5deg 100% 39% / 100%);
+  place-self: center;
+
+  /* padding-block: 12.3rem 1rem; */
+  padding: 1rem;
+  background-color: var(--clr-dark);
   /* backdrop-filter: blur(8px); */
 
   pointer-events: none;
-  transform: translateY(-10px);
-  transition: opacity 300ms ease-in-out, transform 300ms ease-in-out;
+  transform: translateY(40rem);
+  transition: opacity 500ms ease-in-out, transform 500ms ease-in-out;
 }
 
 .dropdown.show {
   opacity: 1;
   pointer-events: auto;
   cursor: auto;
+  transform: translateY(0);
+}
+
+.dropdown h2 {
+  font-size: var(--fs-xl);
 }
 
 .link {
@@ -716,6 +771,20 @@ input {
   content: "\f2bd";
   font-size: var(--icon-size);
   color: var(--clr-grey-200);
+}
+
+.i-list-ul::before {
+  --icon-margin: 0;
+  font: var(--fa-font-solid);
+  content: "\f0ca";
+  font-size: var(--icon-size);
+}
+
+.i-map::before {
+  --icon-margin: 0;
+  font: var(--fa-font-solid);
+  content: "\f279";
+  font-size: var(--icon-size);
 }
 
 .i-search::before {
@@ -825,15 +894,66 @@ input {
   font-size: var(--icon-size);
 }
 
+/* ANIMATIONS */
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes slide-up {
+  0% {
+    transform: translateY(100%);
+  }
+
+  100% {
+    transform: translateY(0%);
+  }
+}
+
+@keyframes slide-down {
+  0% {
+    transform: translateY(0%);
+  }
+
+  100% {
+    transform: translateY(100%);
+  }
+}
+
 /* ************* * */
 /* * WEATHER APP * */
 /* ************* * */
+.fair-use {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: max-content;
+  color: var(--clr-foreground);
+}
 
 .weather-slide-grid {
   --gap: 2rem;
   grid-template-rows: 45vh 1fr auto;
 
   scroll-snap-align: start;
+  position: relative;
+  /* isolation: isolate; */
 }
 
 .weather-today-grid {
@@ -856,10 +976,12 @@ input {
   font-weight: 300;
 }
 
-.high-low-temperatures {
+.highest-lowest-temperatures {
   font-size: 2rem;
   font-weight: 300;
 }
+.highest-temp {}
+.lowest-temp {}
 
 .section-grid {
   /* align-self: start; */
@@ -884,6 +1006,149 @@ input {
 .hourly-temperature-grid {
   /* width: min-content; */
 }
+
+footer {
+  max-width: var(--body-max-width);
+  min-width: var(--body-min-width);
+  width: 100%;
+
+  padding-inline: var(--slider-gap);
+  height: 3rem;
+  background-color: var(--clr-grey-900);
+  filter: brightness(60%);
+  transform: translateX(calc(-1 * var(--slider-gap)));
+}
+
+.footer-flex {
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.footer-flex .button {
+  --btn-p-block: 0;
+  --btn-p-inline: 0;
+}
+
+/* FORM - SEARCH */
+
+.form-flex {
+  max-width: var(--body-max-width);
+  min-width: var(--body-min-width);
+  width: 100%;
+
+  justify-content: center;
+}
+
+.search-input-flex {
+  width: 100%;
+  align-items: center;
+  justify-items: center;
+
+  --gap: 1rem;
+  border: 1px solid var(--clr-grey-900);
+  padding: 0.3rem 1rem;
+  border-radius: var(--border-radius-default);
+}
+
+input {
+  width: 0;
+  width: 100%;
+  border-radius: var(--border-radius-default);
+  color: var(--clr-grey-100);
+  background-color: transparent;
+  /* margin-inline: auto; */
+}
+
+input::placeholder {
+}
+
+input::placeholder:focus,
+input::placeholder:focus-visible {
+  background-color: var(--clr-grey-700);
+  border-radius: var(--border-radius-4);
+}
+
+input:focus,
+input:focus-visible {
+  outline: none;
+  outline-bottom: 1px solid var(--clr-grey-800);
+  /* background-color: hsl(211deg 39% 23% / 10%); */
+}
+
+.city-card-group-grid {
+  max-width: var(--body-max-width);
+  min-width: var(--body-min-width);
+  width: 100%;
+
+  --gap: 1rem;
+}
+
+.city-card-grid {
+  --gap: 1rem;
+  grid-template-rows: min-content;
+
+  border-radius: var(--border-radius-default);
+  background-color: var(--clr-grey-900);
+  filter: brightness(60%);
+  padding-inline: 1rem;
+  cursor: pointer;
+}
+
+.city-card-grid .flex {
+  justify-content: space-between;
+  /* align-items: center; */
+}
+
+.location-grid {
+  grid-template-rows: min-content;
+}
+
+.city-card-grid .city {
+  font-size: 3rem;
+  font-weight: 300;
+}
+
+.city-card-grid .current-temperature {
+  font-size: 4rem;
+  font-weight: 300;
+}
+
+.city-card-grid .short-description {
+  font-size: 1.5rem;
+  font-weight: 300;
+}
+
+.city-card-grid .highest-lowest-temperatures {
+  font-size: 2rem;
+  font-weight: 300;
+}
+
+.city-card-grid .highest-temp,
+.city-card-grid .lowest-temp {
+  font-size: 2rem;
+  font-weight: 400;
+}
+
+.city-card-grid .time {
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: var(--clr-white);
+  /* font-weight: 500; */
+}
+
+.city-card-grid .current-temperature {
+  align-self: flex-start;
+}
+
+.city-card-group-grid:has(.search-result) {
+  --gap: 1rem;
+}
+
+.search-result {
+  font-size: clamp(1.15rem, calc(1.22rem + 0.64vw), 1.72rem);
+}
+
 /* Mobile First */
 /* @media only screen and (320px < width < 768px) {
 }
