@@ -1,39 +1,21 @@
-export function SavedTowns() {
-  return `
-      <div class="city-card-grid">
-          <div class="flex">
-            <div class="location-grid">
-              <div class="city">Gentilly</div>
-              <div class="time">17h46</div>
-            </div>
-            <div class="current-temperature">15°</div>
-          </div>
+import { localStorageStrategy } from "../store/local-storage.js"
+import { getForecastWeatherFromUserQuery } from "../weather/weatherapi.js"
+import { SavedTown } from "./SavedTown.js"
 
-          <div class="flex">
-            <div class="short-description">Partly Cloudy</div>
-            <div class="highest-lowest-temperatures">
-              <span class="highest-temp">H: 15°</span>
-              <span class="lowest-temp">L: 8°</span>
-            </div>
-          </div>
-        </div>
+export async function SavedTowns() {
+  const storedTowns = localStorageStrategy.getItem('savedTowns')
 
-        <div class="city-card-grid">
-          <div class="flex">
-            <div class="location-grid">
-              <div class="city">Montreuil</div>
-              <div class="time">17h46</div>
-            </div>
-            <div class="current-temperature">15°</div>
-          </div>
+  let savedTownsHTML = ''
 
-          <div class="flex">
-            <div class="short-description">Partly Cloudy</div>
-            <div class="highest-lowest-temperatures">
-              <span class="highest-temp">H: 15°</span>
-              <span class="lowest-temp">L: 8°</span>
-            </div>
-          </div>
-        </div>
-  `
+  await Promise.all(storedTowns.map(async city => {
+    const { name } = city
+
+    let data = await getForecastWeatherFromUserQuery({ name })
+
+    if (!data || data == null) return
+
+    savedTownsHTML += SavedTown(data, city)
+  }))
+
+  return savedTownsHTML
 }
