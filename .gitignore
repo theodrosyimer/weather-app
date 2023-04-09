@@ -27,7 +27,7 @@ dist-ssr
 .vercel
 
 # Files and directories i usually use
-ressources
+**/ressources
 **/playground.js
 **/*.taskpaper
 **/morpion*.js
