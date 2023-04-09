@@ -14,6 +14,7 @@ const PORT = 5173
 export default defineConfig({
   root,
   build: {
+    target: 'esnext',
     outDir,
     emptyOutDir: true,
     rollupOptions: {
