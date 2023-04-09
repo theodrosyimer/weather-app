@@ -1,7 +1,7 @@
-export function SearchResult(result) {
+export function SearchResult({ cityInfos, lat, lon, name }) {
   return (
     `
-      <div class="search-result">${result}</div>
+      <div data-name="${name}" data-lat="${lat}" data-lon="${lon}" class="search-result">${cityInfos}</div>
     `
   )
 }
