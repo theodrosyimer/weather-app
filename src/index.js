@@ -1,50 +1,78 @@
-const x = document.querySelector(".test")
-getLocation()
+import { SavedTowns } from "./components/SavedTowns.js"
+import { SearchResults } from "./components/SearchResults.js"
+import { localStorageStrategy } from "./store/local-storage.js"
+import { getLocation } from "./location/geolocation.js"
 
-function getLocation() {
-  let options = {
-    enableHighAccuracy: true,
-    timeout: 5000,
-    maximumAge: 0
+await getLocation()
+
+const searchBtn = document.querySelector('[data-search-dropdown]')
+const searchDropdown = document.querySelector('#search-dropdown')
+
+const formElement = document.querySelector('#search-form')
+const inputElement = document.querySelector('#search-input')
+
+searchBtn.addEventListener('click', async (e) => {
+  const outputElement = document.querySelector('#search-output')
+
+  if (searchDropdown.classList.contains('show')) {
+    searchDropdown.classList.remove('show')
+    searchDropdown.style.display = 'none'
+
+    // document.body.style.overflow = 'visible'
+    return
   }
+  outputElement.innerHTML = await SavedTowns()
 
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(showPosition, showError, options)
-  } else {
-    x.innerHTML = "Geolocation is not supported by this browser."
+  searchDropdown.style.display = 'block'
+  searchDropdown.classList.add('show')
+  // document.body.style.overflow = 'hidden'
+})
+
+formElement.addEventListener('submit', async (e) => {
+  e.preventDefault()
+  const outputElement = document.querySelector('#search-output')
+
+  if (!inputElement.value.length) return
+
+  let query = inputElement.value
+  outputElement.innerHTML = await SearchResults(query)
+
+  outputElement.addEventListener(('click'), async (e) => {
+    if (e.target.matches('.search-result')) {
+      const lat = e.target.dataset.lat
+      const lon = e.target.dataset.lon
+      const name = e.target.dataset.name
+
+      const storedTowns = localStorageStrategy.getItem('savedTowns')
+
+      storedTowns.push({ name, lat, lon, currentLocation: false })
+      localStorageStrategy.setItem('savedTowns', storedTowns)
+      outputElement.innerHTML = await SavedTowns()
+      return
+    }
+  }, { once: true })
+})
+
+inputElement.addEventListener('focus', (e) => {
+  const outputElement = document.querySelector('#search-output')
+
+  if (inputElement.value.length) return
+
+  outputElement.innerHTML = ''
+})
+
+inputElement.addEventListener('blur', async (e) => {
+  const outputElement = document.querySelector('#search-output')
+
+  if (inputElement.value.length) return
+
+  outputElement.innerHTML = await SavedTowns()
+})
+
+inputElement.addEventListener('input', async (e) => {
+  const outputElement = document.querySelector('#search-output')
+
+  if (!e.currentTarget.value.length) {
+    outputElement.innerHTML = await SavedTowns()
   }
-}
-
-async function showPosition(position) {
-  x.innerHTML = "Latitude: " + position.coords.latitude +
-    "<br>Longitude: " + position.coords.longitude
-
-  await getCityInfos({
-    lat: position.coords.latitude,
-    long: position.coords.longitude
-  })
-  return
-}
-
-function showError(error) {
-  switch (error.code) {
-    case error.PERMISSION_DENIED:
-      x.innerHTML = "User denied the request for Geolocation."
-      break
-    case error.POSITION_UNAVAILABLE:
-      x.innerHTML = "Location information is unavailable."
-      break
-    case error.TIMEOUT:
-      x.innerHTML = "The request to get user location timed out."
-      break
-    case error.UNKNOWN_ERROR:
-      x.innerHTML = "An unknown error occurred."
-      break
-  }
-}
-
-async function getCityInfos({ lat, long }) {
-  let data = await fetch(`https://eu1.locationiq.com/v1/reverse?key=${import.meta.env.VITE_API_KEY}&lat=${lat}&lon=${long}&format=json`)
-  let { address, boundingbox, display_name, place_id } = await data.json()
-  console.log(address, boundingbox, display_name, place_id)
-}
+})
