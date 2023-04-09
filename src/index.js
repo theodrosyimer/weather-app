@@ -1,5 +1,5 @@
-import { SavedTowns } from "./components/SavedTowns.js"
-import { SearchResults } from "./components/SearchResults.js"
+import { SavedTowns } from "./components/Search/Saved/SavedTowns.js"
+import { SearchResults } from "./components/Search/Result/SearchResults.js"
 import { localStorageStrategy } from "./store/local-storage.js"
 import { getLocation } from "./location/geolocation.js"
 
