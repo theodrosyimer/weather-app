@@ -633,47 +633,6 @@ input {
 
 /* ELEMENTS */
 
-.dropdown {
-  display: none;
-
-  max-width: var(--body-max-width);
-  min-width: var(--body-min-width);
-  width: 100%;
-  min-height: 100vh;
-  min-height: 100dvh;
-  height: 100%;
-
-  position: absolute;
-  z-index: 20;
-  top: 0;
-
-  overflow-y: scroll;
-  opacity: 0;
-
-  place-items: center;
-  place-self: center;
-
-  /* padding-block: 12.3rem 1rem; */
-  padding: 1rem;
-  background-color: var(--clr-dark);
-  /* backdrop-filter: blur(8px); */
-
-  pointer-events: none;
-  transform: translateY(40rem);
-  transition: opacity 500ms ease-in-out, transform 500ms ease-in-out;
-}
-
-.dropdown.show {
-  opacity: 1;
-  pointer-events: auto;
-  cursor: auto;
-  transform: translateY(0);
-}
-
-.dropdown h2 {
-  font-size: var(--fs-xl);
-}
-
 .link {
   text-decoration: none;
   color: var(--clr-foreground);
@@ -939,6 +898,11 @@ input {
 /* ************* * */
 /* * WEATHER APP * */
 /* ************* * */
+
+.app-icon {
+  transform: scaleX(-1);
+}
+
 .fair-use {
   position: fixed;
   top: 0;
@@ -996,6 +960,8 @@ input {
   color: var(--clr-grey-500);
 }
 
+/* * HOURLY FORECAST * */
+
 .hourly-forecast {
   font-size: 1.5rem;
   font-weight: 300;
@@ -1006,6 +972,20 @@ input {
 .hourly-temperature-grid {
   /* width: min-content; */
 }
+
+/* * 10-DAY FORECAST * */
+
+.ten-day-forecast {}
+
+.daily-temperature-grid {}
+
+/* * MISCELLANEOUS WEATHER DATA * */
+
+.misc-weather-data {}
+
+.misc-weather-data-grid {}
+
+/* * FOOTER * */
 
 footer {
   max-width: var(--body-max-width);
@@ -1030,7 +1010,50 @@ footer {
   --btn-p-inline: 0;
 }
 
-/* FORM - SEARCH */
+/* * DROPDOWN * */
+
+.dropdown {
+  display: none;
+
+  max-width: var(--body-max-width);
+  min-width: var(--body-min-width);
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  height: 100%;
+
+  position: absolute;
+  z-index: 20;
+  top: 0;
+
+  overflow-y: scroll;
+  opacity: 0;
+
+  place-items: center;
+  place-self: center;
+
+  /* padding-block: 12.3rem 1rem; */
+  padding: 1rem;
+  background-color: var(--clr-dark);
+  /* backdrop-filter: blur(8px); */
+
+  pointer-events: none;
+  transform: translateY(40rem);
+  transition: opacity 500ms ease-in-out, transform 500ms ease-in-out;
+}
+
+.dropdown.show {
+  opacity: 1;
+  pointer-events: auto;
+  cursor: auto;
+  transform: translateY(0);
+}
+
+.dropdown h2 {
+  font-size: var(--fs-xl);
+}
+
+/* * FORM - SEARCH * */
 
 .form-flex {
   max-width: var(--body-max-width);
@@ -1060,8 +1083,8 @@ input {
   /* margin-inline: auto; */
 }
 
-input::placeholder {
-}
+/* input::placeholder {
+} */
 
 input::placeholder:focus,
 input::placeholder:focus-visible {
@@ -1072,9 +1095,13 @@ input::placeholder:focus-visible {
 input:focus,
 input:focus-visible {
   outline: none;
-  outline-bottom: 1px solid var(--clr-grey-800);
+  border-bottom: 1px solid var(--clr-grey-800);
+  border-radius: 0;
+
   /* background-color: hsl(211deg 39% 23% / 10%); */
 }
+
+/* * CARD - DROPDOWN * */
 
 .city-card-group-grid {
   max-width: var(--body-max-width);
