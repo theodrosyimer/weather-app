@@ -7,7 +7,9 @@
           content="IE=edge">
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/svg+xml" href="" />
+    <link rel="icon" type="image/png" href="assets/icon/app-icon.png" />
+    <link rel="apple-touch-icon" href="assets/icon/app-icon.png">
+    <link rel="apple-touch-startup-image" href="assets/icon/app-icon.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="style.css">
     <script type="module"
@@ -21,11 +23,12 @@
          href="https://www.weatherapi.com/"
          title="Free Weather API">WeatherAPI.com</a>
     </div>
-    <div id="app"
+
+    <div id="weather-data-display"
          class="slider-x-body">
 
       <!-- ONE CITY BLOCK - START -->
-      <div data-location="current"
+      <div data-location="current-user-location"
            class="weather-slide-grid">
 
         <div class="weather-today-grid">
@@ -38,7 +41,8 @@
           </div>
         </div>
 
-        <section class="section-grid">
+        <section id="hourly-forecast"
+                 class="section-grid">
           <h3 class="section-title">Hourly forecast</h3>
 
           <div class="slider-x hourly-forecast">
@@ -75,36 +79,37 @@
           </div>
         </section>
 
-        <section class="section-grid">
-          <h3 class="section-title">Hourly forecast</h3>
+        <section id="ten-day-forecast"
+                 class="section-grid">
+          <h3 class="section-title">10-Day Forecast</h3>
 
-          <div class="slider-x hourly-forecast">
-            <div class="hourly-temperature-grid">
+          <div class="slider-x ten-day-forecast">
+            <div class="daily-temperature-grid">
               <span>Now</span>
               <span>nuage</span>
               <span>20°</span>
             </div>
-            <div class="hourly-temperature-grid">
+            <div class="daily-temperature-grid">
               <span>13h</span>
               <span>nuage</span>
               <span>20°</span>
             </div>
-            <div class="hourly-temperature-grid">
+            <div class="daily-temperature-grid">
               <span>14h</span>
               <span>nuage</span>
               <span>20°</span>
             </div>
-            <div class="hourly-temperature-grid">
+            <div class="daily-temperature-grid">
               <span>15h</span>
               <span>nuage</span>
               <span>20°</span>
             </div>
-            <div class="hourly-temperature-grid">
+            <div class="daily-temperature-grid">
               <span>16h</span>
               <span>nuage</span>
               <span>20°</span>
             </div>
-            <div class="hourly-temperature-grid">
+            <div class="daily-temperature-grid">
               <span>17h</span>
               <span>nuage</span>
               <span>20°</span>
@@ -112,110 +117,37 @@
           </div>
         </section>
 
-        <section class="section-grid">
-          <h3 class="section-title">Hourly forecast</h3>
+        <section id="misc-weather-data"
+                 class="section-grid">
+          <h3 class="v section-title">Hourly forecast</h3>
 
-          <div class="slider-x hourly-forecast">
-            <div class="hourly-temperature-grid">
+          <div class="slider-x misc-weather-data">
+            <div class="misc-weather-data-grid">
               <span>Now</span>
               <span>nuage</span>
               <span>20°</span>
             </div>
-            <div class="hourly-temperature-grid">
+            <div class="misc-weather-data-grid">
               <span>13h</span>
               <span>nuage</span>
               <span>20°</span>
             </div>
-            <div class="hourly-temperature-grid">
+            <div class="misc-weather-data-grid">
               <span>14h</span>
               <span>nuage</span>
               <span>20°</span>
             </div>
-            <div class="hourly-temperature-grid">
+            <div class="misc-weather-data-grid">
               <span>15h</span>
               <span>nuage</span>
               <span>20°</span>
             </div>
-            <div class="hourly-temperature-grid">
+            <div class="misc-weather-data-grid">
               <span>16h</span>
               <span>nuage</span>
               <span>20°</span>
             </div>
-            <div class="hourly-temperature-grid">
-              <span>17h</span>
-              <span>nuage</span>
-              <span>20°</span>
-            </div>
-          </div>
-        </section>
-
-        <section class="section-grid">
-          <h3 class="section-title">Hourly forecast</h3>
-
-          <div class="slider-x hourly-forecast">
-            <div class="hourly-temperature-grid">
-              <span>Now</span>
-              <span>nuage</span>
-              <span>20°</span>
-            </div>
-            <div class="hourly-temperature-grid">
-              <span>13h</span>
-              <span>nuage</span>
-              <span>20°</span>
-            </div>
-            <div class="hourly-temperature-grid">
-              <span>14h</span>
-              <span>nuage</span>
-              <span>20°</span>
-            </div>
-            <div class="hourly-temperature-grid">
-              <span>15h</span>
-              <span>nuage</span>
-              <span>20°</span>
-            </div>
-            <div class="hourly-temperature-grid">
-              <span>16h</span>
-              <span>nuage</span>
-              <span>20°</span>
-            </div>
-            <div class="hourly-temperature-grid">
-              <span>17h</span>
-              <span>nuage</span>
-              <span>20°</span>
-            </div>
-          </div>
-        </section>
-
-        <section class="section-grid">
-          <h3 class="section-title">Hourly forecast</h3>
-
-          <div class="slider-x hourly-forecast">
-            <div class="hourly-temperature-grid">
-              <span>Now</span>
-              <span>nuage</span>
-              <span>20°</span>
-            </div>
-            <div class="hourly-temperature-grid">
-              <span>13h</span>
-              <span>nuage</span>
-              <span>20°</span>
-            </div>
-            <div class="hourly-temperature-grid">
-              <span>14h</span>
-              <span>nuage</span>
-              <span>20°</span>
-            </div>
-            <div class="hourly-temperature-grid">
-              <span>15h</span>
-              <span>nuage</span>
-              <span>20°</span>
-            </div>
-            <div class="hourly-temperature-grid">
-              <span>16h</span>
-              <span>nuage</span>
-              <span>20°</span>
-            </div>
-            <div class="hourly-temperature-grid">
+            <div class="misc-weather-data-grid">
               <span>17h</span>
               <span>nuage</span>
               <span>20°</span>
