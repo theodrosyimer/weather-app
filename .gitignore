@@ -31,3 +31,4 @@ dist-ssr
 **/playground.js
 **/*.taskpaper
 **/morpion*.js
+**/store.js
