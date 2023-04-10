@@ -5,6 +5,8 @@ import { getLocation } from "./location/geolocation.js"
 
 await getLocation()
 
+document.querySelector('video').playbackRate = .4
+
 const searchBtn = document.querySelector('[data-search-dropdown]')
 const searchDropdown = document.querySelector('#search-dropdown')
 
@@ -18,14 +20,22 @@ searchBtn.addEventListener('click', async (e) => {
     searchDropdown.classList.remove('show')
     searchDropdown.style.display = 'none'
 
-    // document.body.style.overflow = 'visible'
     return
   }
   outputElement.innerHTML = await SavedTowns()
 
-  searchDropdown.style.display = 'block'
+  searchDropdown.style.display = 'grid'
   searchDropdown.classList.add('show')
-  // document.body.style.overflow = 'hidden'
+})
+
+document.addEventListener('keydown', (e) => {
+  if (searchDropdown.classList.contains('show') && e.key.toLowerCase() === 'escape' && !inputElement.value.length) {
+
+    searchDropdown.classList.remove('show')
+    searchDropdown.style.display = 'none'
+
+    return
+  }
 })
 
 formElement.addEventListener('submit', async (e) => {
@@ -76,3 +86,15 @@ inputElement.addEventListener('input', async (e) => {
     outputElement.innerHTML = await SavedTowns()
   }
 })
+
+inputElement.addEventListener('keydown', (e) => {
+  if (e.key.toLowerCase() === 'escape' && !inputElement.value.length) {
+    searchDropdown.classList.remove('show')
+    searchDropdown.style.display = 'none'
+
+    document.body.style.overflow = 'visible'
+    return
+  }
+})
+
+
