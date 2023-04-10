@@ -6,7 +6,8 @@
     "allowJs": true,
     "lib": [
       "ESNext",
-      "DOM"
+      "DOM",
+      "DOM.Iterable"
     ],
     "moduleResolution": "nodenext",
     "strict": true,
@@ -19,7 +20,10 @@
     "noImplicitReturns": true,
     "skipLibCheck": true,
     "declaration": false,
-    "sourceMap": true
+    "sourceMap": true,
+    "types": [
+      "vite/client"
+    ]
   },
   "include": [
     "src"

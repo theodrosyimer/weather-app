@@ -1,4 +1,7 @@
-export function SavedTown({ location, current, forecast: { forecastday } }, { currentLocation }) {
+import type { CityCoordinate } from "../../../store/local-storage.js"
+import type { ForecastWeatherResponse } from "../../../weather/forecast-weather.js"
+
+export function SavedTown({ location, current, forecast: { forecastday } }: ForecastWeatherResponse, { currentLocation }: CityCoordinate) {
 
   return `
       <div data-lat="${location.lat}" data-lon="${location.lon}"  class="city-card-grid">

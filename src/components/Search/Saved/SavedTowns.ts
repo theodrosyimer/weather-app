@@ -5,6 +5,8 @@ import { SavedTown } from "./SavedTown.js"
 export async function SavedTowns() {
   const storedTowns = localStorageStrategy.getItem('savedTowns')
 
+  if (!storedTowns) return
+
   let savedTownsHTML = ''
 
   await Promise.all(storedTowns.map(async city => {

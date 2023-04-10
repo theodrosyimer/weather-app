@@ -1,5 +1,5 @@
-import { getCityFromCoordinates } from "./locationIQ-api.js"
-import { localStorageStrategy } from "../store/local-storage.js"
+import { getCityFromCoordinates } from "./locationIQ-api.ts"
+import { localStorageStrategy } from "../store/local-storage.ts"
 
 let city = document.querySelector(".city")
 
@@ -58,7 +58,7 @@ function showError(error) {
 }
 
 
-function handlePermission() {
+export function handlePermission() {
   navigator.permissions.query({ name: "geolocation" }).then((result) => {
     if (result.state === "granted") {
       // console.log(`Permissions: ${result.state}`)

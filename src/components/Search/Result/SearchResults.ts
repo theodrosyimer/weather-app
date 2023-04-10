@@ -1,8 +1,10 @@
 import { SearchResult } from "./SearchResult.js"
 import { /* getCitiesDetailsFromResults,  */getCitiesFromQuery } from "../../../location/locationIQ-api.js"
 
-export async function SearchResults(query) {
+export async function SearchResults(query: string) {
   let searchResultsHTML = ''
+
+  if (!query) return
 
   let cities = await getCitiesFromQuery({ query })
 

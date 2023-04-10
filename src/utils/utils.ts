@@ -1,4 +1,4 @@
-function getTimeAsString() {
+export function getTimeAsString() {
   const now = new Date()
   const hours = now.getHours().toString()
   const minutes = `0${now.getMinutes()}`.slice(-2)
