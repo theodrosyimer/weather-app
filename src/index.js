@@ -1,8 +1,9 @@
-import { SavedTowns } from "./components/Search/Saved/SavedTowns.js"
-import { SearchResults } from "./components/Search/Result/SearchResults.js"
-import { localStorageStrategy } from "./store/local-storage.js"
-import { getLocation } from "./location/geolocation.js"
+import { SavedTowns } from "./components/Search/Saved/SavedTowns.ts"
+import { SearchResults } from "./components/Search/Result/SearchResults.ts"
+import { localStorageStrategy } from "./store/local-storage.ts"
+import { getLocation, handlePermission } from "./location/geolocation.js"
 
+handlePermission()
 await getLocation()
 
 document.querySelector('video').playbackRate = .4
