@@ -18,11 +18,11 @@
   </head>
 
   <body>
-    <div class="fair-use">
+    <!-- <div class="fair-use">
       Powered by <a class="link"
          href="https://www.weatherapi.com/"
          title="Free Weather API">WeatherAPI.com</a>
-    </div>
+    </div> -->
 
     <div id="weather-data-display"
          class="slider-x-body">
@@ -31,7 +31,227 @@
       <div data-location="current-user-location"
            class="weather-slide-grid">
 
-        <div class="weather-today-grid">
+        <video class="video-bg"
+               autoplay
+               muted
+               loop>
+          <source type="video/mp4"
+                  src="assets/videos/partially-cloudy.mp4">
+        </video>
+
+        <div id="day-forecast"
+             class="weather-today-grid">
+          <h2 class="city"></h2>
+          <div class="current-temperature">10°</div>
+          <div class="description">Cloudy</div>
+          <div class="highest-lowest-temperatures">
+            <span class="highest-temp">H: 15°</span>
+            <span class="lowest-temp">L: 8°</span>
+          </div>
+        </div>
+
+        <section id="hourly-forecast"
+                 class="section-grid">
+          <h3 class="sticky section-title">Hourly forecast</h3>
+
+          <div class="slider-x hourly-forecast">
+            <div class="hourly-temperature-grid">
+              <span>Now</span>
+              <span>icon</span>
+              <span>20°</span>
+            </div>
+            <div class="hourly-temperature-grid">
+              <span>13h</span>
+              <span>icon</span>
+              <span>20°</span>
+            </div>
+            <div class="hourly-temperature-grid">
+              <span>14h</span>
+              <span>icon</span>
+              <span>20°</span>
+            </div>
+            <div class="hourly-temperature-grid">
+              <span>15h</span>
+              <span>icon</span>
+              <span>20°</span>
+            </div>
+            <div class="hourly-temperature-grid">
+              <span>16h</span>
+              <span>icon</span>
+              <span>20°</span>
+            </div>
+            <div class="hourly-temperature-grid">
+              <span>17h</span>
+              <span>icon</span>
+              <span>20°</span>
+            </div>
+          </div>
+        </section>
+
+        <section id="ten-day-forecast"
+                 class="section-grid">
+          <h3 class="section-title">10-Day Forecast</h3>
+
+          <div class="ten-day-forecast-grid">
+            <div class="daily-temperature-flex">
+              <span>Today</span>
+              <span>icon</span>
+              <span>20°</span>
+              <div class="temperature-range-flex">
+                <span class="highest-temp">3°</span>
+                <input type="range"
+                       name="weather-range"
+                       id="weather-range">
+                <span class="lowest-temp">18°</span>
+              </div>
+            </div>
+            <div class="daily-temperature-flex">
+              <span>Mon</span>
+              <span>icon</span>
+              <span>20°</span>
+              <div class="temperature-range-flex">
+                <span class="highest-temp">3°</span>
+                <input type="range"
+                       name="weather-range"
+                       id="weather-range">
+                <span class="lowest-temp">18°</span>
+              </div>
+
+            </div>
+            <div class="daily-temperature-flex">
+              <span>Tue</span>
+              <span>icon</span>
+              <span>20°</span>
+              <div class="temperature-range-flex">
+                <span class="highest-temp">3°</span>
+                <input type="range"
+                       name="weather-range"
+                       id="weather-range">
+                <span class="lowest-temp">18°</span>
+              </div>
+
+            </div>
+            <div class="daily-temperature-flex">
+              <span>Wed</span>
+              <span>icon</span>
+              <span>20°</span>
+              <div class="temperature-range-flex">
+                <span class="highest-temp">3°</span>
+                <input type="range"
+                       name="weather-range"
+                       id="weather-range">
+                <span class="lowest-temp">18°</span>
+              </div>
+
+            </div>
+            <div class="daily-temperature-flex">
+              <span>Thu</span>
+              <span>icon</span>
+              <span>20°</span>
+              <div class="temperature-range-flex">
+                <span class="highest-temp">3°</span>
+                <input type="range"
+                       name="weather-range"
+                       id="weather-range">
+                <span class="lowest-temp">18°</span>
+              </div>
+
+            </div>
+            <div class="daily-temperature-flex">
+              <span>Fri</span>
+              <span>icon</span>
+              <span>20°</span>
+              <div class="temperature-range-flex">
+                <span class="highest-temp">3°</span>
+                <input type="range"
+                       name="temperature-range"
+                       id="temperature-range">
+                <span class="lowest-temp">18°</span>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        <section id="misc-weather-data"
+                 class="section-grid">
+          <h3 class="visually-hidden section-title">Hourly forecast</h3>
+
+          <div class="misc-weather-data-grid">
+            <h3 class="section-title">UV Index</h3>
+            <span>Now</span>
+            <span>nuage</span>
+            <span>20°</span>
+          </div>
+          <div class="misc-weather-data-grid">
+            <h3 class="section-title">Sunset</h3>
+            <span>13h</span>
+            <span>nuage</span>
+            <span>20°</span>
+          </div>
+          <div class="misc-weather-data-grid">
+            <h3 class="section-title">Wind</h3>
+            <span>14h</span>
+            <span>nuage</span>
+            <span>20°</span>
+          </div>
+          <div class="misc-weather-data-grid">
+            <h3 class="section-title">Precipitation</h3>
+            <span>15h</span>
+            <span>nuage</span>
+            <span>20°</span>
+          </div>
+          <div class="misc-weather-data-grid">
+            <h3 class="section-title">Feels like</h3>
+            <span>16h</span>
+            <span>nuage</span>
+            <span>20°</span>
+          </div>
+          <div class="misc-weather-data-grid">
+            <h3 class="section-title">Humidity</h3>
+            <span>17h</span>
+            <span>nuage</span>
+            <span>20°</span>
+          </div>
+          <div class="misc-weather-data-grid">
+            <h3 class="section-title">Visibility</h3>
+            <span>17h</span>
+            <span>nuage</span>
+            <span>20°</span>
+          </div>
+          <div class="misc-weather-data-grid">
+            <h3 class="section-title">Pressure</h3>
+            <span>17h</span>
+            <span>nuage</span>
+            <span>20°</span>
+          </div>
+        </section>
+
+        <!-- <footer class="fixed footer-flex">
+          <button class="button icon i-map"></button>
+          <div>Element2</div>
+          <button data-search-dropdown
+                  class="button icon i-list-ul"></button>
+
+        </footer> -->
+
+      </div>
+      <!-- ONE CITY BLOCK - END -->
+
+      <!-- ONE CITY BLOCK - START -->
+      <div data-location="current-user-location"
+           class="weather-slide-grid">
+
+        <video class="video-bg"
+               autoplay
+               muted
+               loop>
+          <source type="video/mp4"
+                  src="assets/videos/partially-cloudy.mp4">
+        </video>
+
+        <div id="day-forecast"
+             class="weather-today-grid">
           <h2 class="city"></h2>
           <div class="current-temperature">10°</div>
           <div class="description">Cloudy</div>
@@ -48,32 +268,32 @@
           <div class="slider-x hourly-forecast">
             <div class="hourly-temperature-grid">
               <span>Now</span>
-              <span>nuage</span>
+              <span>icon</span>
               <span>20°</span>
             </div>
             <div class="hourly-temperature-grid">
               <span>13h</span>
-              <span>nuage</span>
+              <span>icon</span>
               <span>20°</span>
             </div>
             <div class="hourly-temperature-grid">
               <span>14h</span>
-              <span>nuage</span>
+              <span>icon</span>
               <span>20°</span>
             </div>
             <div class="hourly-temperature-grid">
               <span>15h</span>
-              <span>nuage</span>
+              <span>icon</span>
               <span>20°</span>
             </div>
             <div class="hourly-temperature-grid">
               <span>16h</span>
-              <span>nuage</span>
+              <span>icon</span>
               <span>20°</span>
             </div>
             <div class="hourly-temperature-grid">
               <span>17h</span>
-              <span>nuage</span>
+              <span>icon</span>
               <span>20°</span>
             </div>
           </div>
@@ -83,88 +303,145 @@
                  class="section-grid">
           <h3 class="section-title">10-Day Forecast</h3>
 
-          <div class="slider-x ten-day-forecast">
-            <div class="daily-temperature-grid">
-              <span>Now</span>
-              <span>nuage</span>
+          <div class="ten-day-forecast-grid">
+            <div class="daily-temperature-flex">
+              <span>Today</span>
+              <span>icon</span>
               <span>20°</span>
+              <div class="temperature-range-flex">
+                <span class="highest-temp">3°</span>
+                <input type="range"
+                       name="weather-range"
+                       id="weather-range">
+                <span class="lowest-temp">18°</span>
+              </div>
             </div>
-            <div class="daily-temperature-grid">
-              <span>13h</span>
-              <span>nuage</span>
+            <div class="daily-temperature-flex">
+              <span>Mon</span>
+              <span>icon</span>
               <span>20°</span>
+              <div class="temperature-range-flex">
+                <span class="highest-temp">3°</span>
+                <input type="range"
+                       name="weather-range"
+                       id="weather-range">
+                <span class="lowest-temp">18°</span>
+              </div>
+
             </div>
-            <div class="daily-temperature-grid">
-              <span>14h</span>
-              <span>nuage</span>
+            <div class="daily-temperature-flex">
+              <span>Tue</span>
+              <span>icon</span>
               <span>20°</span>
+              <div class="temperature-range-flex">
+                <span class="highest-temp">3°</span>
+                <input type="range"
+                       name="weather-range"
+                       id="weather-range">
+                <span class="lowest-temp">18°</span>
+              </div>
+
             </div>
-            <div class="daily-temperature-grid">
-              <span>15h</span>
-              <span>nuage</span>
+            <div class="daily-temperature-flex">
+              <span>Wed</span>
+              <span>icon</span>
               <span>20°</span>
+              <div class="temperature-range-flex">
+                <span class="highest-temp">3°</span>
+                <input type="range"
+                       name="weather-range"
+                       id="weather-range">
+                <span class="lowest-temp">18°</span>
+              </div>
+
             </div>
-            <div class="daily-temperature-grid">
-              <span>16h</span>
-              <span>nuage</span>
+            <div class="daily-temperature-flex">
+              <span>Thu</span>
+              <span>icon</span>
               <span>20°</span>
+              <div class="temperature-range-flex">
+                <span class="highest-temp">3°</span>
+                <input type="range"
+                       name="weather-range"
+                       id="weather-range">
+                <span class="lowest-temp">18°</span>
+              </div>
+
             </div>
-            <div class="daily-temperature-grid">
-              <span>17h</span>
-              <span>nuage</span>
+            <div class="daily-temperature-flex">
+              <span>Fri</span>
+              <span>icon</span>
               <span>20°</span>
+              <div class="temperature-range-flex">
+                <span class="highest-temp">3°</span>
+                <input type="range"
+                       name="temperature-range"
+                       id="temperature-range">
+                <span class="lowest-temp">18°</span>
+              </div>
+
             </div>
           </div>
         </section>
 
         <section id="misc-weather-data"
                  class="section-grid">
-          <h3 class="v section-title">Hourly forecast</h3>
+          <h3 class="visually-hidden section-title">Hourly forecast</h3>
 
-          <div class="slider-x misc-weather-data">
-            <div class="misc-weather-data-grid">
-              <span>Now</span>
-              <span>nuage</span>
-              <span>20°</span>
-            </div>
-            <div class="misc-weather-data-grid">
-              <span>13h</span>
-              <span>nuage</span>
-              <span>20°</span>
-            </div>
-            <div class="misc-weather-data-grid">
-              <span>14h</span>
-              <span>nuage</span>
-              <span>20°</span>
-            </div>
-            <div class="misc-weather-data-grid">
-              <span>15h</span>
-              <span>nuage</span>
-              <span>20°</span>
-            </div>
-            <div class="misc-weather-data-grid">
-              <span>16h</span>
-              <span>nuage</span>
-              <span>20°</span>
-            </div>
-            <div class="misc-weather-data-grid">
-              <span>17h</span>
-              <span>nuage</span>
-              <span>20°</span>
-            </div>
+          <div class="misc-weather-data-grid">
+            <h3 class="section-title">UV Index</h3>
+            <span>Now</span>
+            <span>nuage</span>
+            <span>20°</span>
+          </div>
+          <div class="misc-weather-data-grid">
+            <h3 class="section-title">Sunset</h3>
+            <span>13h</span>
+            <span>nuage</span>
+            <span>20°</span>
+          </div>
+          <div class="misc-weather-data-grid">
+            <h3 class="section-title">Wind</h3>
+            <span>14h</span>
+            <span>nuage</span>
+            <span>20°</span>
+          </div>
+          <div class="misc-weather-data-grid">
+            <h3 class="section-title">Precipitation</h3>
+            <span>15h</span>
+            <span>nuage</span>
+            <span>20°</span>
+          </div>
+          <div class="misc-weather-data-grid">
+            <h3 class="section-title">Feels like</h3>
+            <span>16h</span>
+            <span>nuage</span>
+            <span>20°</span>
+          </div>
+          <div class="misc-weather-data-grid">
+            <h3 class="section-title">Humidity</h3>
+            <span>17h</span>
+            <span>nuage</span>
+            <span>20°</span>
+          </div>
+          <div class="misc-weather-data-grid">
+            <h3 class="section-title">Visibility</h3>
+            <span>17h</span>
+            <span>nuage</span>
+            <span>20°</span>
+          </div>
+          <div class="misc-weather-data-grid">
+            <h3 class="section-title">Pressure</h3>
+            <span>17h</span>
+            <span>nuage</span>
+            <span>20°</span>
           </div>
         </section>
 
-        <footer class="fixed footer-flex">
-          <button class="button icon i-map"></button>
-          <div>Element2</div>
-          <button data-search-dropdown
-                  class="button icon i-list-ul"></button>
 
-        </footer>
+
       </div>
       <!-- ONE CITY BLOCK - END -->
-
 
     </div>
 
@@ -192,6 +469,14 @@
 
 
     </div>
+
+    <footer class="fixed footer-flex">
+      <button class="button icon i-map"></button>
+      <div>Element2</div>
+      <button data-search-dropdown
+              class="button icon i-list-ul"></button>
+
+    </footer>
 
   </body>
 
