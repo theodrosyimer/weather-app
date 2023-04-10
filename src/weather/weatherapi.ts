@@ -21,7 +21,9 @@ export type WeatherQuery = {
 }
 
 export async function getRealtimeWeatherFromUserQuery({ lat, lon, name }: WeatherQuery) {
-  const userInput = name == null ? `${lat},${lon}` : name
+  const userInput = lat && lon ? `${lat},${lon}` : name
+
+  if (!userInput) return
 
   const weatherData = fetch(`https://weatherapi-com.p.rapidapi.com/current.json?q=${userInput}`, options)
     .then(response => response.json())
@@ -34,6 +36,8 @@ export async function getRealtimeWeatherFromUserQuery({ lat, lon, name }: Weathe
 export async function getForecastWeatherFromUserQuery({ lat, lon, name, days = 1 }: WeatherQuery) {
   const userInput = lat && lon ? `${lat},${lon}` : name
 
+  if (!userInput) return
+
   const weatherData = fetch(`https://weatherapi-com.p.rapidapi.com/forecast.json?q=${userInput}&days=${days}`, options)
     .then(response => response.json())
     .then(response => response as ForecastWeatherResponse)
@@ -43,7 +47,9 @@ export async function getForecastWeatherFromUserQuery({ lat, lon, name, days = 1
 }
 
 export async function getSearchAutocompleteWeatherFromUserQuery({ lat, lon, name }: WeatherQuery) {
-  const userInput = name == null ? `${lat},${lon}` : name
+  const userInput = lat && lon ? `${lat},${lon}` : name
+
+  if (!userInput) return
 
   const weatherData = fetch(`https://weatherapi-com.p.rapidapi.com/search.json?q=${userInput}`, options)
     .then(response => response.json())
@@ -54,7 +60,9 @@ export async function getSearchAutocompleteWeatherFromUserQuery({ lat, lon, name
 }
 
 export async function getTimeZoneWeatherFromUserQuery({ lat, lon, name }: WeatherQuery) {
-  const userInput = name == null ? `${lat},${lon}` : name
+  const userInput = lat && lon ? `${lat},${lon}` : name
+
+  if (!userInput) return
 
   const weatherData = fetch(`https://weatherapi-com.p.rapidapi.com/timezone.json?q=${userInput}`, options)
     .then(response => response.json())
@@ -65,6 +73,9 @@ export async function getTimeZoneWeatherFromUserQuery({ lat, lon, name }: Weathe
 }
 
 export async function getIpLookupFromUserQuery({ ip }: WeatherQuery) {
+
+  if (!ip) return
+
   const weatherData = fetch(`https://weatherapi-com.p.rapidapi.com/ip.json?q=${ip}`, options)
     .then(response => response.json())
     .then(response => response as IPLookupWeatherResponse)
